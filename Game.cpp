@@ -18,7 +18,7 @@ void Game::init(){
 
      if(IMG_Init(IMG_INIT_PNG) != 0){
         isRunning = false;
-        printf("sIMG_Init: %s\n", SDL_GetError());
+        printf("IMG_Init: %s\n", SDL_GetError());
     }
 
     if(SDL_CreateWindowAndRenderer(600, 480, SDL_WINDOW_SHOWN, &window, &renderer) != 0){
@@ -61,6 +61,7 @@ void Game::render(){
 }
 
 void Game::clean(){
+    SDL_DestroyTexture(tex);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
